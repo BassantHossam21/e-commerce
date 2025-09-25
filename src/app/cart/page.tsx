@@ -135,6 +135,7 @@ export default function Cart() {
     console.log(response);
     if (response.message === "success") {
       setProducts([]);
+      setNumberOfCartItems(0); // تحديث الـ context
       toast.success("🛒✅ Cart cleared successfully!", {
         position: "top-center",
         duration: 2000,
