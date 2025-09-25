@@ -20,7 +20,12 @@ export default async function addToCart(id: string) {
 
 const payload = await response.json();
 return payload;
-  }catch(err){
-    return err
+  }catch (err) {
+    // هذا الجزء مسؤول عن إرسال رسالة الخطأ لتظهر كـ alert في الـ front-end
+    if (err instanceof Error) {
+      return { status: "error", message: err.message };
+    } else {
+      return { status: "error", message: "Something went wrong" };
+    }
   }
 }

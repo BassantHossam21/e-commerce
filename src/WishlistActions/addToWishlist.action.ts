@@ -20,8 +20,12 @@ export default async function addToWishlist(id: string) {
 
 const payload = await response.json();
 return payload;
-  }catch(err){
-    console.log(err);
-    return err;
+  }catch (err) {
+    // 🟢 هذا الجزء مسؤول عن رجوع الـ status والـ message اللي بيتم عرضها في toast بالـ WishlistBtn
+  if (err instanceof Error) {
+    return { status: "error", message: err.message };
+  } else {
+    return { status: "error", message: "Something went wrong" };
   }
+}
 }
